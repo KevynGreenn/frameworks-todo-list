@@ -4,6 +4,9 @@ import { CreateTodoDto } from "../dto/create-todo.dto";
 
 @Injectable()
 export class FindAllTodosRepository {
+    findAll() {
+        throw new Error("Method not implemented.");
+    }
     FindMany(data: CreateTodoDto) {
         throw new Error("Method not implemented.");
     }

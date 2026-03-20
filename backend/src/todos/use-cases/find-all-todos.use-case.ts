@@ -1,23 +1,23 @@
 import { Injectable, Logger } from "@nestjs/common";
-import { FindAllTodosRepository } from "../repository";
-import { CreateTodoDto } from "../dto/create-todo.dto";
+import { FindAllTodosRepository } from "../repository/find-all-todos.repository";
+
 
 @Injectable()
-export class CreateTodoUseCase {
-    constructor(
-        private readonly findAllTodoRepository: FindAllTodosRepository,
-        private readonly logger: Logger,
-    ){}
+export class FindAllTodosUseCase {
+  constructor(
+    private readonly findAllTodosRepository: FindAllTodosRepository,
+    private readonly logger: Logger,
+  ) { }
 
-async execute(data: CreateTodoDto) {
+  async execute() {
     try {
-        this.logger.log('Finding ToDos...')
-        const todo = await this.findAllTodoRepository.FindMany(data);
-        this.logger.log('ToDos found succesfully')
-   }    catch (error) {
-        this.logger.error(error)
-        throw new Error('Failed to find ToDos');
-        
+      this.logger.log('Finding all todos...');
+      const todos = await this.findAllTodosRepository.findAll();
+      this.logger.log('Todos found successfully!');
+      return todos;
+    } catch (error) {
+      this.logger.error(error);
+      throw new Error('Failed to find all todos');
     }
   }
 }
