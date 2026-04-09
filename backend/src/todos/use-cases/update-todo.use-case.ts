@@ -19,9 +19,9 @@ export class UpdateTodoUseCase {
         throw new Error("Todo not found");
       }
 
-      await this.UpdateTodoRepository.update(id);
+      const updatedTodo = await this.UpdateTodoRepository.update(id, data);
       this.logger.log("Todo updated successfully!");
-      return todo;
+      return updatedTodo;
     } catch (error) {
       this.logger.error(error);
       throw error;
