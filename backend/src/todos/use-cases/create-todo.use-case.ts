@@ -1,24 +1,23 @@
-import { Injectable, Logger } from "@nestjs/common";
-import { CreateTodoRepository } from "../repository/create-todo.repostitory";
-import { CreateTodoDto } from "../dto/create-todo.dto";
-
+import { Injectable, Logger } from '@nestjs/common';
+import { CreateTodoRepository } from '../repository/create-todo.repostitory';
+import { CreateTodoDto } from '../dto/create-todo.dto';
 
 @Injectable()
 export class CreateTodoUseCase {
-    constructor(
-        private readonly createTodoRepository: CreateTodoRepository,
-        private readonly logger: Logger,
-    ){}
+  constructor(
+    private readonly createTodoRepository: CreateTodoRepository,
+    private readonly logger: Logger,
+  ) {}
 
-async execute(data: CreateTodoDto) {
+  async execute(data: CreateTodoDto) {
     try {
-        this.logger.log('Creating toDo...');
-        const todo = await this.createTodoRepository.create(data);
-        this.logger.log('ToDo created succesfully');
-        return todo;
-   }    catch (error) {
-        this.logger.error(error)
-        throw new Error('Failed to create toDo');
-        }
+      this.logger.log('Creating toDo...');
+      const todo = await this.createTodoRepository.create(data);
+      this.logger.log('ToDo created succesfully');
+      return todo;
+    } catch (error) {
+      this.logger.error(error);
+      throw new Error('Failed to create toDo');
     }
+  }
 }

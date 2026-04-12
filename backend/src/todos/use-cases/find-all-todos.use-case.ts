@@ -1,13 +1,12 @@
-import { Injectable, Logger } from "@nestjs/common";
-import { FindAllTodosRepository } from "../repository/find-all-todos.repository";
-
+import { Injectable, Logger } from '@nestjs/common';
+import { FindAllTodosRepository } from '../repository/find-all-todos.repository';
 
 @Injectable()
 export class FindAllTodosUseCase {
   constructor(
     private readonly findAllTodosRepository: FindAllTodosRepository,
     private readonly logger: Logger,
-  ) { }
+  ) {}
 
   async execute() {
     try {
