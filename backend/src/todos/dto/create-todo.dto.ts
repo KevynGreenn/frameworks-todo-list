@@ -4,8 +4,8 @@ import {
   IsOptional,
   IsString,
   IsDateString,
-} from "class-validator";
-import { TodoPriority } from "@prisma/client";
+} from 'class-validator';
+import { TodoPriority } from '@prisma/client';
 
 export class CreateTodoDto {
   @IsString()
