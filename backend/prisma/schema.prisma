@@ -22,7 +22,7 @@ model User {
 id             String    @id @default(uuid())
 name           String?
 email          String    @unique 
-passowrdHash   String    @map("password_hash")
+passwordHash   String    @map("password_hash")
 IsActive       Boolean   @default(true) @map("is_active")
 
 todos          Todo[]
